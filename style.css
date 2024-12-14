@@ -8,20 +8,30 @@
 
 #container {
   border: solid, black, 1px;
-  max-width: 800px;
-  height: 800px;
+  max-width: 600px;
+  max-height: 600px;
+  aspect-ratio: 1/1;
   display: flex;
   flex: auto;
+  flex-wrap: wrap;
 }
 
 .square {
-  border: solid, black, 1px;
   flex: auto;
   display: flex;
   flex-direction: column;
+  aspect-ratio: 1/1;
 }
 
 .miniSquare {
-  border: solid, black, 1px;
   flex: auto;
+  aspect-ratio: 1/1;
+}
+
+.colorized {
+  background-color: rgb(0, 0, 0);
+}
+
+.reset {
+  background-color: white;
 }

@@ -1,9 +1,11 @@
 const container = document.querySelector("#container");
 const resetButton = document.querySelector("#resetButton");
 const squareArray = [];
+const miniSquareArray = [];
+let numberOfSquares;
 
-function createSquares() {
-  for (let i = 0; i < 16; i++) {
+function createSquares(squareCount) {
+  for (let i = 0; i < squareCount; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
     square.id = "square-${i}";
@@ -11,17 +13,37 @@ function createSquares() {
     container.append(square);
   }
 }
-
-function createMiniSquares() {
+function createMiniSquares(squareCount) {
   for (square of squareArray) {
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < squareCount; i++) {
       const miniSquare = document.createElement("div");
       miniSquare.classList.add("miniSquare");
       miniSquare.id = "miniSquare-${i}";
+      miniSquare.addEventListener("mouseover", () =>
+        miniSquare.classList.add("colorized")
+      );
+      miniSquareArray.push(miniSquare);
       square.append(miniSquare);
     }
   }
 }
 
-resetButton.addEventListener("click", createSquares());
-resetButton.addEventListener("click", createMiniSquares());
+document.addEventListener("onload", createSquares(16));
+document.addEventListener("onload", createMiniSquares(16));
+
+function resetGrid() {
+  let numberOfSquares = prompt("Choose number of squares per side (Max 100)");
+  const clearAll = document.querySelectorAll(".colorized");
+  clearAll.forEach(function (box) {
+    box.classList.remove("colorized");
+  });
+  container.innerHTML = "";
+  if (numberOfSquares <= 100) {
+    createSquares(numberOfSquares);
+    createMiniSquares(numberOfSquares);
+  } else {
+    alert("Sorry:( Number of squares per side limited to 100.");
+    resetGrid();
+  }
+}
+resetButton.addEventListener("click", resetGrid);

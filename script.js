@@ -19,9 +19,15 @@ function createMiniSquares(squareCount) {
       const miniSquare = document.createElement("div");
       miniSquare.classList.add("miniSquare");
       miniSquare.id = "miniSquare-${i}";
-      miniSquare.addEventListener("mouseover", () =>
-        miniSquare.classList.add("colorized")
-      );
+      let shade = 0;
+      miniSquare.style.opacity = shade;
+      function darkenSquare() {
+        if (shade < 1) {
+          shade += 0.1;
+          miniSquare.style.opacity = shade;
+        }
+      }
+      miniSquare.addEventListener("mouseover", darkenSquare);
       miniSquareArray.push(miniSquare);
       square.append(miniSquare);
     }

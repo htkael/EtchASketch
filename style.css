@@ -7,7 +7,8 @@
 }
 
 #container {
-  border: solid, black, 1px;
+  border: solid, rgb(252, 92, 92), 100px;
+  border-radius: 32px;
   max-width: 600px;
   max-height: 600px;
   aspect-ratio: 1/1;

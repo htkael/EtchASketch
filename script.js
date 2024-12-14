@@ -39,12 +39,19 @@ document.addEventListener("onload", createMiniSquares(16));
 
 function resetGrid() {
   let numberOfSquares = prompt("Choose number of squares per side (Max 100)");
+
+  if (!numberOfSquares || isNaN(numberOfSquares) || numberOfSquares < 1) {
+    alert("Please enter a valid number.");
+    resetGrid();
+    return;
+  }
+
   const clearAll = document.querySelectorAll(".colorized");
   clearAll.forEach(function (box) {
     box.classList.remove("colorized");
   });
   container.innerHTML = "";
-  if (numberOfSquares <= 100) {
+  if (numberOfSquares <= 100 && numberOfSquares > 0) {
     createSquares(numberOfSquares);
     createMiniSquares(numberOfSquares);
   } else {

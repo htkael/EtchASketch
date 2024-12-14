@@ -1,6 +1,6 @@
 #body {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0px;
   height: 100vh;
@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   background-color: white;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
